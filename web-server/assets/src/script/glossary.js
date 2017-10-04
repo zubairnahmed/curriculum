@@ -52,7 +52,7 @@ const replaceTermWithLink = (term, string) => {
   const regExp = new RegExp(`(${escapeRegExp(term.value)})`, 'ig')
   let match, numberOfMatches = 0
   while((match = regExp.exec(string)) !== null){
-    regExp.lastIndex = 0 // reset the regexp state
+    regExp.lastIndex = 0
     numberOfMatches++
     newNodes.push(string.slice(0, match.index))
     newNodes.push(termToLink(term).text(match[0]))
@@ -64,7 +64,7 @@ const replaceTermWithLink = (term, string) => {
 }
  
 const termToLink = term =>
-  $('<a>')
-    .attr('href', term.path)
-    .attr('title', `${term.value}: ${term.definitionText}`)
-    .addClass('glossary-term-link')
+  $('<a>')
+    .attr('href', term.path)
+    .attr('title', `${term.value}: ${term.definitionText}`)
+    .addClass('glossary-term-link')
